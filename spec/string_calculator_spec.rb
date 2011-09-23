@@ -46,4 +46,34 @@ describe StringCalculator do
       StringCalculator.add("//#{seperator}\n#{numbers}").should eql(15)
     end
   end
+
+  context "5" do
+    it "should raise an exception on a negative number" do
+      lambda {
+        StringCalculator.add("2,-1")
+      }.should raise_error(IllegalArgumentError)
+    end
+
+    it "should raise an exception on a negative number" do
+      begin
+        StringCalculator.add("2,-1")
+      rescue => e
+        e.illegal_arguments.should include(-1)
+      else
+        fail
+      end
+    end
+
+    it "should raise an exception on multiple negative number" do
+      begin
+        StringCalculator.add("2,-1,-3,5")
+      rescue => e
+        e.illegal_arguments.should include(-1)
+        e.illegal_arguments.should include(-3)
+      else
+        fail
+      end
+    end
+
+  end
 end
