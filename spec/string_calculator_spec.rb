@@ -18,4 +18,11 @@ describe StringCalculator do
       StringCalculator.add("20,22").should eql(42)
     end
   end
+
+  context "2" do
+    it "should allow any amount of numbers" do
+      numbers = "5,3,23,98,12,9,2"
+      StringCalculator.add(numbers).should eql(152)
+    end
+  end
 end
