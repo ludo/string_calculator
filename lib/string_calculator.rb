@@ -1,7 +1,8 @@
 class StringCalculator
   class<<self
     def add(value)
-      value.split(/[,\n]/).inject(0) { |sum, v| sum += v.to_i }
+      separator = value[%r{//(.*)\n}, 1] || /[,\n]/
+      value.split(separator).inject(0) { |sum, v| sum += v.to_i }
     end
   end
 end

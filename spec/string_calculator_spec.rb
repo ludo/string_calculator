@@ -32,4 +32,18 @@ describe StringCalculator do
       StringCalculator.add(numbers).should eql(152)
     end
   end
+
+  context "4" do
+    it "should allow custom separators" do
+      seperator = ";"
+      numbers = "5;3;7"
+      StringCalculator.add("//#{seperator}\n#{numbers}").should eql(15)
+    end
+
+    it "should allow multi-character custom separators" do
+      seperator = "-=-"
+      numbers = "5-=-7-=-3"
+      StringCalculator.add("//#{seperator}\n#{numbers}").should eql(15)
+    end
+  end
 end
