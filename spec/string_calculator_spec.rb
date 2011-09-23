@@ -25,4 +25,11 @@ describe StringCalculator do
       StringCalculator.add(numbers).should eql(152)
     end
   end
+
+  context "3" do
+    it "should allow comma and \n separators" do
+      numbers = "5,3\n23,98\n12,9,2"
+      StringCalculator.add(numbers).should eql(152)
+    end
+  end
 end
